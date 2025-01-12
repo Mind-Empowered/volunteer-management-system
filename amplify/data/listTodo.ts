@@ -26,7 +26,9 @@ export const handler: Schema['listTodo']['functionHandler'] = async (
 	console.log('got event: ' + JSON.stringify(event));
 	console.log('got context: ' + JSON.stringify(context));
 	// Connect to MongoDB
+
 	const [client, , collection] = await connectToMongodb();
+
 
 	try {
 		console.log('Connected to MongoDB');
