@@ -1,0 +1,136 @@
+.events-container {
+    display: flex;
+    height: 100vh;
+}
+
+.events-content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: antiquewhite;
+}
+
+.events-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.events-header h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.filter-sort {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.notification-icon {
+    position: relative;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Filter and Sort Buttons */
+.filter-btn,
+.sort-btn {
+    background-color: #D19402;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.filter-btn:hover,
+.sort-btn:hover {
+    background-color: white;
+    color: #D19402;
+}
+
+/* Updated Events Grid - Horizontal Layout */
+.events-grid {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;  /* Space between event cards */
+    overflow-x: auto; /* Enables horizontal scrolling if needed */
+    padding: 20px;
+    white-space: nowrap; /* Prevents cards from stacking */
+}
+
+/* Event Cards */
+.event-card {
+    flex: 0 0 450px; /* Set width of each card */
+    background: white;
+    border-radius: 30px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Event Title */
+.event-card h3 {
+    margin: 10px 0;
+    font-size: 20px;
+}
+
+/* Event Description */
+.event-card p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Event Image */
+.event-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Event Details */
+.event-details p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+/* Join Now Button */
+.join-now {
+    background-color: #D19402;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.join-now:hover {
+    background-color: white;
+    color: #D19402;
+}
