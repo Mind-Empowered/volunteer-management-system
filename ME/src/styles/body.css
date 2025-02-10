@@ -1,0 +1,15 @@
+.body{
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.member-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Adjust the gap between cards as needed */
+}
+
+.member-card {
+    flex: 1 1 calc(33.333% - 20px); /* 3 cards per row with gap */
+    box-sizing: border-box;
+}
