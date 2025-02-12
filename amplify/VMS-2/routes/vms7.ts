@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
-import Event from "../models/Event";
-import EventRegistration from "../models/eventRegistration";
+import Event from "../models/eventRegister";
+import EventRegistration from "../models/userRegister";
 
 const router = express.Router();
 
