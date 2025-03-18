@@ -1,0 +1,36 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    padding: 10px 20px;
+    position: relative;
+  }
+  
+  .filter-sort-buttons {
+    display:flex;
+    gap: 10px; /* Adds space between the buttons */
+    position: absolute; top: 10px; right: 20px;
+  }
+
+  .filter-sort {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .filter-btn, .sort-btn {
+    background-color: #d4a017;
+    color: white;
+    border: none;
+    padding:8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .filter-btn:hover, .sort-btn:hover {
+    background-color: #a07c0f;
+  }
+  
