@@ -1,0 +1,157 @@
+service: mindempowered-api
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: ap-south-1
+  environment:
+    NODE_ENV: production
+    MONGODB_URI: ${ssm:/mindempowered/MONGODB_URI}
+    JWT_SECRET: ${ssm:/mindempowered/JWT_SECRET}
+
+functions:
+  # Auth Routes
+  registerUser:
+    handler: src/handlers/authHandler.registerUserHandler
+    events:
+      - httpApi:
+          path: /api/auth/register
+          method: post
+
+  loginUser:
+    handler: src/handlers/authHandler.loginUserHandler
+    events:
+      - httpApi:
+          path: /api/auth/login
+          method: post
+
+  getUserProfile:
+    handler: src/handlers/authHandler.getUserProfileHandler
+    events:
+      - httpApi:
+          path: /api/auth/profile
+          method: get
+
+  updateUserProfile:
+    handler: src/handlers/authHandler.updateUserProfileHandler
+    events:
+      - httpApi:
+          path: /api/auth/profile
+          method: put
+
+  # User Routes
+  getUsers:
+    handler: src/handlers/userHandler.getUsersHandler
+    events:
+      - httpApi:
+          path: /api/users
+          method: get
+
+  getUserById:
+    handler: src/handlers/userHandler.getUserByIdHandler
+    events:
+      - httpApi:
+          path: /api/users/{id}
+          method: get
+
+  updateUser:
+    handler: src/handlers/userHandler.updateUserHandler
+    events:
+      - httpApi:
+          path: /api/users/{id}
+          method: put
+
+  deleteUser:
+    handler: src/handlers/userHandler.deleteUserHandler
+    events:
+      - httpApi:
+          path: /api/users/{id}
+          method: delete
+
+  updateUserStatus:
+    handler: src/handlers/userHandler.updateUserStatusHandler
+    events:
+      - httpApi:
+          path: /api/users/{id}/status
+          method: put
+
+  getPendingUsers:
+    handler: src/handlers/userHandler.getPendingUsersHandler
+    events:
+      - httpApi:
+          path: /api/users/pending
+          method: get
+
+  getVolunteerDirectory:
+    handler: src/handlers/userHandler.getVolunteerDirectoryHandler
+    events:
+      - httpApi:
+          path: /api/users/volunteers
+          method: get
+
+  # Event Routes
+  createEvent:
+    handler: src/handlers/eventHandler.createEventHandler
+    events:
+      - httpApi:
+          path: /api/events
+          method: post
+
+  getEvents:
+    handler: src/handlers/eventHandler.getEventsHandler
+    events:
+      - httpApi:
+          path: /api/events
+          method: get
+
+  getEventById:
+    handler: src/handlers/eventHandler.getEventByIdHandler
+    events:
+      - httpApi:
+          path: /api/events/{id}
+          method: get
+
+  updateEvent:
+    handler: src/handlers/eventHandler.updateEventHandler
+    events:
+      - httpApi:
+          path: /api/events/{id}
+          method: put
+
+  deleteEvent:
+    handler: src/handlers/eventHandler.deleteEventHandler
+    events:
+      - httpApi:
+          path: /api/events/{id}
+          method: delete
+
+  registerForEvent:
+    handler: src/handlers/eventHandler.registerForEventHandler
+    events:
+      - httpApi:
+          path: /api/events/{id}/register
+          method: post
+
+  unregisterFromEvent:
+    handler: src/handlers/eventHandler.unregisterFromEventHandler
+    events:
+      - httpApi:
+          path: /api/events/{id}/unregister
+          method: post
+
+plugins:
+  - serverless-esbuild
+
+custom:
+  esbuild:
+    bundle: true
+    minify: false
+    sourcemap: true
+    exclude: ['aws-sdk']
+    target: 'node20'
+    define:
+      'require.resolve': undefined
+    platform: 'node'
+    concurrency: 10
