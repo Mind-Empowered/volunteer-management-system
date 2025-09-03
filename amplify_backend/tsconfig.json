@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+      "baseUrl": "./",
+      "paths": {
+        "@types/*": ["amplify_backend/types/*"]
+      }
+    }
+  }
+  
